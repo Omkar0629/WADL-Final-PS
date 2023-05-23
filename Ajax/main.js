@@ -1,12 +1,12 @@
 let fetchData = () => {
-  let httprequest = new XMLHttpRequest();
-  httprequest.open("GET", "https://jsonplaceholder.typicode.com/users");
-  httprequest.send();
-  httprequest.onload = () => {
-    // let res = JSON.parse(httprequest.responseText);
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
+  xhr.send();
+  xhr.onload = () => {
+    // let res = JSON.parse(xhr.responseText);
     // console.log(res);
     // localStorage.setItem("users", JSON.stringify(res));
-    let res = httprequest.responseText;
+    let res = xhr.responseText;
     let arr = JSON.parse(localStorage.getItem('users'));
     if (!arr) {
       localStorage.setItem("users", res)
@@ -29,7 +29,6 @@ let displayData = () => {
                     <td>${user.email}</td>
                     <td>${user.phone}</td>
                     <td>${user.address.city}</td>
-                   
                 </tr>`)
   );
 };
@@ -73,3 +72,5 @@ btn.addEventListener("click", () => {
     }
   };
 });
+
+// localStorage.clear()
